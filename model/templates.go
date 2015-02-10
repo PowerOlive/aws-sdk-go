@@ -609,7 +609,7 @@ func New(creds aws.CredentialsProvider, region string, client *http.Client) *{{ 
   resp.Body = httpResp.Body
       {{ else }}
   defer httpResp.Body.Close()
-  if e := xml.NewDecoder(httpResp.Body).Decode(resp); e != nil && e != io.EOF {
+  if e := xml.NewDecoder(httpResp.Body).Decode(&resp.{{ $op.Output.Payload }}); e != nil && e != io.EOF {
     err = e
     return
   }

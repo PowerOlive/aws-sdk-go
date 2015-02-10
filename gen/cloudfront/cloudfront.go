@@ -94,7 +94,7 @@ func (c *CloudFront) CreateCloudFrontOriginAccessIdentity(req *CreateCloudFrontO
 	}
 
 	defer httpResp.Body.Close()
-	if e := xml.NewDecoder(httpResp.Body).Decode(resp); e != nil && e != io.EOF {
+	if e := xml.NewDecoder(httpResp.Body).Decode(&resp.CloudFrontOriginAccessIdentity); e != nil && e != io.EOF {
 		err = e
 		return
 	}
@@ -229,7 +229,7 @@ func (c *CloudFront) CreateInvalidation(req *CreateInvalidationRequest) (resp *C
 	}
 
 	defer httpResp.Body.Close()
-	if e := xml.NewDecoder(httpResp.Body).Decode(resp); e != nil && e != io.EOF {
+	if e := xml.NewDecoder(httpResp.Body).Decode(&resp.Invalidation); e != nil && e != io.EOF {
 		err = e
 		return
 	}
@@ -288,7 +288,7 @@ func (c *CloudFront) CreateStreamingDistribution(req *CreateStreamingDistributio
 	}
 
 	defer httpResp.Body.Close()
-	if e := xml.NewDecoder(httpResp.Body).Decode(resp); e != nil && e != io.EOF {
+	if e := xml.NewDecoder(httpResp.Body).Decode(&resp.StreamingDistribution); e != nil && e != io.EOF {
 		err = e
 		return
 	}
@@ -473,7 +473,7 @@ func (c *CloudFront) GetCloudFrontOriginAccessIdentity(req *GetCloudFrontOriginA
 	}
 
 	defer httpResp.Body.Close()
-	if e := xml.NewDecoder(httpResp.Body).Decode(resp); e != nil && e != io.EOF {
+	if e := xml.NewDecoder(httpResp.Body).Decode(&resp.CloudFrontOriginAccessIdentity); e != nil && e != io.EOF {
 		err = e
 		return
 	}
@@ -523,7 +523,7 @@ func (c *CloudFront) GetCloudFrontOriginAccessIdentityConfig(req *GetCloudFrontO
 	}
 
 	defer httpResp.Body.Close()
-	if e := xml.NewDecoder(httpResp.Body).Decode(resp); e != nil && e != io.EOF {
+	if e := xml.NewDecoder(httpResp.Body).Decode(&resp.CloudFrontOriginAccessIdentityConfig); e != nil && e != io.EOF {
 		err = e
 		return
 	}
@@ -622,7 +622,7 @@ func (c *CloudFront) GetDistributionConfig(req *GetDistributionConfigRequest) (r
 	}
 
 	defer httpResp.Body.Close()
-	if e := xml.NewDecoder(httpResp.Body).Decode(resp); e != nil && e != io.EOF {
+	if e := xml.NewDecoder(httpResp.Body).Decode(&resp.DistributionConfig); e != nil && e != io.EOF {
 		err = e
 		return
 	}
@@ -676,7 +676,7 @@ func (c *CloudFront) GetInvalidation(req *GetInvalidationRequest) (resp *GetInva
 	}
 
 	defer httpResp.Body.Close()
-	if e := xml.NewDecoder(httpResp.Body).Decode(resp); e != nil && e != io.EOF {
+	if e := xml.NewDecoder(httpResp.Body).Decode(&resp.Invalidation); e != nil && e != io.EOF {
 		err = e
 		return
 	}
@@ -720,7 +720,7 @@ func (c *CloudFront) GetStreamingDistribution(req *GetStreamingDistributionReque
 	}
 
 	defer httpResp.Body.Close()
-	if e := xml.NewDecoder(httpResp.Body).Decode(resp); e != nil && e != io.EOF {
+	if e := xml.NewDecoder(httpResp.Body).Decode(&resp.StreamingDistribution); e != nil && e != io.EOF {
 		err = e
 		return
 	}
@@ -770,7 +770,7 @@ func (c *CloudFront) GetStreamingDistributionConfig(req *GetStreamingDistributio
 	}
 
 	defer httpResp.Body.Close()
-	if e := xml.NewDecoder(httpResp.Body).Decode(resp); e != nil && e != io.EOF {
+	if e := xml.NewDecoder(httpResp.Body).Decode(&resp.StreamingDistributionConfig); e != nil && e != io.EOF {
 		err = e
 		return
 	}
@@ -822,7 +822,7 @@ func (c *CloudFront) ListCloudFrontOriginAccessIdentities(req *ListCloudFrontOri
 	}
 
 	defer httpResp.Body.Close()
-	if e := xml.NewDecoder(httpResp.Body).Decode(resp); e != nil && e != io.EOF {
+	if e := xml.NewDecoder(httpResp.Body).Decode(&resp.CloudFrontOriginAccessIdentityList); e != nil && e != io.EOF {
 		err = e
 		return
 	}
@@ -919,7 +919,7 @@ func (c *CloudFront) ListInvalidations(req *ListInvalidationsRequest) (resp *Lis
 	}
 
 	defer httpResp.Body.Close()
-	if e := xml.NewDecoder(httpResp.Body).Decode(resp); e != nil && e != io.EOF {
+	if e := xml.NewDecoder(httpResp.Body).Decode(&resp.InvalidationList); e != nil && e != io.EOF {
 		err = e
 		return
 	}
@@ -965,7 +965,7 @@ func (c *CloudFront) ListStreamingDistributions(req *ListStreamingDistributionsR
 	}
 
 	defer httpResp.Body.Close()
-	if e := xml.NewDecoder(httpResp.Body).Decode(resp); e != nil && e != io.EOF {
+	if e := xml.NewDecoder(httpResp.Body).Decode(&resp.StreamingDistributionList); e != nil && e != io.EOF {
 		err = e
 		return
 	}
@@ -1027,7 +1027,7 @@ func (c *CloudFront) UpdateCloudFrontOriginAccessIdentity(req *UpdateCloudFrontO
 	}
 
 	defer httpResp.Body.Close()
-	if e := xml.NewDecoder(httpResp.Body).Decode(resp); e != nil && e != io.EOF {
+	if e := xml.NewDecoder(httpResp.Body).Decode(&resp.CloudFrontOriginAccessIdentity); e != nil && e != io.EOF {
 		err = e
 		return
 	}
@@ -1095,7 +1095,7 @@ func (c *CloudFront) UpdateDistribution(req *UpdateDistributionRequest) (resp *U
 	}
 
 	defer httpResp.Body.Close()
-	if e := xml.NewDecoder(httpResp.Body).Decode(resp); e != nil && e != io.EOF {
+	if e := xml.NewDecoder(httpResp.Body).Decode(&resp.Distribution); e != nil && e != io.EOF {
 		err = e
 		return
 	}
@@ -1163,7 +1163,7 @@ func (c *CloudFront) UpdateStreamingDistribution(req *UpdateStreamingDistributio
 	}
 
 	defer httpResp.Body.Close()
-	if e := xml.NewDecoder(httpResp.Body).Decode(resp); e != nil && e != io.EOF {
+	if e := xml.NewDecoder(httpResp.Body).Decode(&resp.StreamingDistribution); e != nil && e != io.EOF {
 		err = e
 		return
 	}
