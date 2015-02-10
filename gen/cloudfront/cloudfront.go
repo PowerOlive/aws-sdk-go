@@ -7,8 +7,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/awslabs/aws-sdk-go/aws"
-	"github.com/awslabs/aws-sdk-go/gen/endpoints"
+	"github.com/getlantern/aws-sdk-go/aws"
+	"github.com/getlantern/aws-sdk-go/gen/endpoints"
 )
 
 import (
@@ -572,7 +572,7 @@ func (c *CloudFront) GetDistribution(req *GetDistributionRequest) (resp *GetDist
 	}
 
 	defer httpResp.Body.Close()
-	if e := xml.NewDecoder(httpResp.Body).Decode(resp); e != nil && e != io.EOF {
+	if e := xml.NewDecoder(httpResp.Body).Decode(&resp.Distribution); e != nil && e != io.EOF {
 		err = e
 		return
 	}
@@ -868,7 +868,7 @@ func (c *CloudFront) ListDistributions(req *ListDistributionsRequest) (resp *Lis
 	}
 
 	defer httpResp.Body.Close()
-	if e := xml.NewDecoder(httpResp.Body).Decode(resp); e != nil && e != io.EOF {
+	if e := xml.NewDecoder(httpResp.Body).Decode(&resp.DistributionList); e != nil && e != io.EOF {
 		err = e
 		return
 	}
