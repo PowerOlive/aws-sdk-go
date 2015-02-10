@@ -159,7 +159,7 @@ func (c *CloudFront) CreateDistribution(req *CreateDistributionRequest) (resp *C
 	}
 
 	defer httpResp.Body.Close()
-	if e := xml.NewDecoder(httpResp.Body).Decode(resp); e != nil && e != io.EOF {
+	if e := xml.NewDecoder(httpResp.Body).Decode(&resp.Distribution); e != nil && e != io.EOF {
 		err = e
 		return
 	}
